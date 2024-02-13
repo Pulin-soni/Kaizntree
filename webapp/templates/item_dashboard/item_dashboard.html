@@ -1,0 +1,40 @@
+{% extends 'login/base.html' %}
+
+{% block content %}
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">SKU</th>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">In Stock</th>
+                <th scope="col">Available Stock</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if items|length == 0 %}
+            <tr class="table-active">
+                <th scope="row">-</th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            {% endif %}
+
+            {% for item in items %}
+            <tr class="table-active">
+                <th scope="row">{{item.sku}}</th>
+                <td>{{ item.name }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.stock }}</td>
+                <td>{{ item.stock_avail }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
